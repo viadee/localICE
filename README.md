@@ -16,9 +16,9 @@ See Goldstein et al (2013) at http://arxiv.org/abs/1309.6392 for the ICE approac
 
 
 [regression]: 
-https://github.com/viadee/localICE/Examples/regression.png
+https://github.com/viadee/localICE/blob/master/Examples/regression.png
 "Regression"
 
 [classification]: 
-https://github.com/viadee/localICE/Examples/classification.png
+https://github.com/viadee/localICE/blob/master/Examples/classification.png
 "Classification"

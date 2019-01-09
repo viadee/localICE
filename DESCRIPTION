@@ -1,0 +1,17 @@
+Package: localICE
+Type: Package
+Title: localICE is a local explanation approach from the field of eXplainable Artificial Intelligence (XAI)
+Version: 0.1.0
+Author: Martin Walter
+Maintainer: Martin Walter <mf-walter@web.de>
+Description: localICE is an extension to ICE and is a three-dimensional local explanation for single data instances. The three dimension are two features at the horizontal and vertical axes as well as the target that is represented by different colors. The approach is applicable for classification and regression problems to explain interactions of two features towards the target. The plot for discrete targets looks similar to plots of cluster algorithms like k-means, where different clusters represent different predictions. The approach can explain features of type factor and numeric.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+  ggplot2
+Suggests: 
+  mlbench, 
+  h2o,
+  randomForest
+RoxygenNote: 6.1.1

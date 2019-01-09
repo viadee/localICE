@@ -23,6 +23,12 @@ install_github("viadee/localICE")
 Restart your session in RStudio after installation:
 ```.rs.restartR()```
 
+# License
+BSD 3-Clause License
+
+# Authors
+Martin Walter - *Initial work* - [Martin Walter](https://github.com/aiwalter)
+
 
 [regression]: 
 https://github.com/viadee/localICE/blob/master/Examples/regression.png

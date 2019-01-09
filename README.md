@@ -15,7 +15,14 @@ See Goldstein et al (2013) at http://arxiv.org/abs/1309.6392 for the ICE approac
 ![classification]
 
 # Installation
-The package is planned to be released at CRAN. Till then, use the following commands to install it:
+The package is planned to be released at CRAN. Till then, please use the following commands to install it:
+```
+require("devtools")
+install_github("viadee/localICE")
+```
+Restart your session in RStudio after installation:
+```.rs.restartR()```
+
 
 [regression]: 
 https://github.com/viadee/localICE/blob/master/Examples/regression.png

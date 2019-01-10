@@ -26,7 +26,7 @@ localICE = function(instance,
     feature_1 = feature_2
     feature_2 = feature_temp
     step_temp = step_1
-    step_2 = step_1
+    step_1 = step_2
     step_2 = step_temp
   }
   # Predict fun
@@ -121,8 +121,6 @@ localICE = function(instance,
     }
   }
   point_matrix = as.data.frame(point_matrix)
-  point_matrix = point_matrix
-  instance_temp = instance_temp
   if (num_categorical_features == 1) {
     explanation = ggplot(point_matrix,
                          aes(as.character(point_matrix[, feature_1]),
@@ -193,19 +191,19 @@ localICE = function(instance,
         size = 1
       )
   } else {
-      explanation = explanation +
-        geom_vline(
-          xintercept = instance[, feature_1],
-          linetype = "dotted",
-          color = "black",
-          size = 1
-        ) +
-        geom_hline(
-          yintercept = instance[, feature_2],
-          linetype = "dotted",
-          color = "black",
-          size = 1
-        )
+    explanation = explanation +
+      geom_vline(
+        xintercept = instance[, feature_1],
+        linetype = "dotted",
+        color = "black",
+        size = 1
+      ) +
+      geom_hline(
+        yintercept = instance[, feature_2],
+        linetype = "dotted",
+        color = "black",
+        size = 1
+      )
   }
   explanation = explanation +
     theme(legend.position = "bottom") +

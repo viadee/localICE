@@ -39,9 +39,6 @@ localICE = function(instance,
     }
   }
   # Init
-  instance = instance
-  feature_1 = feature_1
-  feature_2 = feature_2
   point_matrix = matrix(NA, nrow = 0, ncol = ncol(instance) + 1)
   colnames(point_matrix) = c(colnames(instance), "target")
   instance_temp = instance
@@ -57,7 +54,7 @@ localICE = function(instance,
           paste(
             "Step = ",
             step_2,
-            " is too big or too small for your data. Please use a different step, mabye even < 1"
+            " is too big or too small for your data. Please use a different step, maybe even < 1"
           )
         )
       }
@@ -87,14 +84,14 @@ localICE = function(instance,
   else {
     num_categorical_features = 0
     if (step_1 > max(data_set[feature_1]) - min(data_set[feature_1]) ||
-        step_1 == 0) {
+        step_1 <= 0) {
       stop(
         paste(
           "Step = ",
           step_1,
           " of ",
           feature_1,
-          " is too big or too small for your data. Please use a different step, mabye even < 1"
+          " is too big or too small for your data. Please use a different step, maybe even < 1"
         )
       )
     }
@@ -106,7 +103,7 @@ localICE = function(instance,
           step_2,
           " of ",
           feature_2,
-          " is too big or too small for your data. Please use a different step, mabye even < 1"
+          " is too big or too small for your data. Please use a different step, maybe even < 1"
         )
       )
     }
@@ -126,7 +123,7 @@ localICE = function(instance,
                          aes(as.character(point_matrix[, feature_1]),
                              as.numeric(point_matrix[, feature_2]))) +
       scale_x_discrete(labels = unique(data_set[, feature_1]))
-
+    
   } else if (num_categorical_features == 2) {
     explanation = ggplot(point_matrix,
                          aes(
@@ -152,7 +149,8 @@ localICE = function(instance,
     # Classification"
     explanation = explanation +
       scale_fill_manual(
-        values = c("#852339", "#c89ca6"),
+        values = c("#852339", "#c89ca6", "#8797a3", "#435c8b", 
+                   "#009cb3", "#e77c12", "#87bf2a", "#5e5e65"),
         name = paste(target, " = ", predict.fun(model, instance))
       ) +
       geom_raster(aes(fill = unlist(point_matrix$target)), interpolate = F)

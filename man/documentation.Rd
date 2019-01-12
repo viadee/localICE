@@ -81,12 +81,12 @@ if(require("randomForest") && require("mlbench")){
   plot(explanation)
 }
 
-# Example of how to use \code{predict.fun} to use any machine learning library,
-# in this case the library \code{h2o} for a classification:
+# Example of how to use predict.fun to use any machine learning library,
+# in this case the library h2o for a classification:
 if(require("h2o") && require("mlbench")){
   h2o.init()
 
-  # Wrapping the \code{h2o} predict function and data type:
+  # Wrapping the h2o predict function and data type:
   predict.fun = function(model,newdata){
     prediction = h2o.predict(model, as.h2o(newdata))
     prediction = as.data.frame(prediction)

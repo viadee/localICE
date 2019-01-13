@@ -10,7 +10,7 @@ Local Individual Conditional Expectation (localICE) is a local explanation appro
 \usage{
 localICE(
   instance,
-  data_set,
+  data,
   feature_1,
   feature_2,
   target,
@@ -23,16 +23,16 @@ localICE(
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{instance}{instance is a row of \code{data_set} that has to be explained by means of localICE.
+  \item{instance}{instance is a row of \code{data} that has to be explained by means of localICE.
   }
-  \item{data_set}{a data frame containing all predictors and a representative distribution of data instances (rows). The data set can be the test data from model creation and does not have to contain predictions or true labels. The data set is needed to get the data distribution of \code{feature_1} and \code{feature_2} that should be explained for the given \code{instance}. The data distribution is then used to perturb the values of the two given features.}
+  \item{data}{a data frame containing all predictors and a representative distribution of data instances (rows). The data set can be the test data from model creation and does not have to contain predictions or true labels. The data set is needed to get the data distribution of \code{feature_1} and \code{feature_2} that should be explained for the given \code{instance}. The data distribution is then used to perturb the values of the two given features.}
   \item{feature_1}{a feature of interest as \code{character}}
   \item{feature_2}{an other feature of interest as \code{character}}
   \item{target}{the name of the target as \code{character}. It is required to name the legend of the plot.}
   \item{model}{a machine learning model as object.}
   \item{predict.fun}{a prediction function if \code{model} is not of type \code{randomForest}, \code{mlr} or \code{caret}. An exemplary function for the machine learning library \code{h2o} is shown below in the "Examples" section}
   \item{regression}{if the model is not a regression problem but a classification problem, then set \code{regression = FALSE}.}
-  \item{step_1}{set how accurate the explanation according to \code{feature_1} should be. Step is only required if \code{feature_1} is numeric. The greater the step, the faster the computation and the less accurate the explanation for \code{feature_1}. The step has to be smaller than \code{max(data_set[,feature_1]) - min(data_set[,feature_1])} and greater than \code{0}. For integer features, the step should also be an integer to avoid biased model predictions.}
+  \item{step_1}{set how accurate the explanation according to \code{feature_1} should be. Step is only required if \code{feature_1} is numeric. The greater the step, the faster the computation and the less accurate the explanation for \code{feature_1}. The step has to be smaller than \code{max(data[,feature_1]) - min(data[,feature_1])} and greater than \code{0}. For integer features, the step should also be an integer to avoid biased model predictions.}
   \item{step_2}{same as \code{step_1} but for \code{feature_2}}
 
 }
@@ -50,7 +50,7 @@ if(require("randomForest")){
 
   explanation = localICE(
     instance = iris[1,],
-    data_set = iris,
+    data = iris,
     feature_1 = "Species",
     feature_2 = "Sepal.Width",
     target = "Sepal.Length",
@@ -69,7 +69,7 @@ if(require("randomForest") && require("mlbench")){
 
   explanation = localICE(
     instance = PimaIndiansDiabetes[8,],
-    data_set = PimaIndiansDiabetes,
+    data = PimaIndiansDiabetes,
     feature_1 = "age",
     feature_2 = "glucose",
     target = "diabetes",
@@ -97,7 +97,7 @@ if(require("h2o") && require("mlbench")){
 
   explanation = localICE(
     instance = PimaIndiansDiabetes[1,],
-    data_set = PimaIndiansDiabetes,
+    data = PimaIndiansDiabetes,
     feature_1 = "age",
     feature_2 = "glucose",
     target = "diabetes",

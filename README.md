@@ -21,8 +21,11 @@ if(require("devtools")){
   install_github("viadee/localICE")  
 }
 ```
+
 Restart your session in RStudio after installation:
-```.rs.restartR()```
+```
+.rs.restartR()
+```
 
 # License
 BSD 3-Clause License

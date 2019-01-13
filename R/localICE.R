@@ -140,7 +140,7 @@ localICE = function(instance,
   if (regression == TRUE) {
     # Regression
     explanation = explanation +
-      scale_fill_gradientn(colours = c("white", "#852339"),
+      scale_fill_gradientn(colours = c("#852339", "white"),
                            name = paste(target, " = ", round(
                              predict.fun(model, instance), digits = 1
                            ))) +

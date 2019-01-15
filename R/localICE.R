@@ -72,7 +72,6 @@ localICE = function(instance,
         setTxtProgressBar(progress, count_progress)
       }
     }
-    close(progress)
   }
   # Two categorical features
   else if (class(data[, feature_1]) == "factor" &&
@@ -94,7 +93,6 @@ localICE = function(instance,
       count_levels = count_levels + 1
       setTxtProgressBar(progress, count_levels)
     }
-    close(progress)
   }
   # No categorical features
   else {
@@ -126,7 +124,6 @@ localICE = function(instance,
       }
       setTxtProgressBar(progress, (i - min(data[feature_1])) / (max(data[feature_1]) - min(data[feature_1])))
     }
-    close(progress)
   }
   point_matrix = as.data.frame(point_matrix)
   if (num_categorical_features == 1) {
@@ -134,7 +131,7 @@ localICE = function(instance,
                          aes(as.character(point_matrix[, feature_1]),
                              as.numeric(point_matrix[, feature_2]))) +
       scale_x_discrete(labels = unique(data[, feature_1]))
-    
+
   } else if (num_categorical_features == 2) {
     explanation = ggplot(point_matrix,
                          aes(
@@ -225,5 +222,6 @@ localICE = function(instance,
   explanation = explanation +
     theme(legend.position = "bottom") +
     scale_size(guide = guide_legend(direction = "vertical"))
+  close(progress)
   return(explanation)
   }

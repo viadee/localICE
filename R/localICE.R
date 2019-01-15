@@ -19,7 +19,7 @@ localICE = function(instance,
           Please select another feature or convert it to type 'factor'
           and train your model again with feature type 'factor'!"
         )
-      )
+        )
   }
   # Swap features
   if (class(data[, feature_1]) != "factor" &&
@@ -46,30 +46,43 @@ localICE = function(instance,
   instance_temp = instance
   error_1 = " is too big or too small for your data.
   Please use a different step, maybe even < 1"
-  
   # One categorical feature:
   if (class(data[, feature_1]) == "factor" &&
       class(data[, feature_2]) != "factor") {
     num_categorical_features = 1
+    if (step_2 > max(data[feature_2]) - min(data[feature_2]) ||
+        step_1 <= 0) {
+      stop(paste("Step = ",
+                 step_2, error_1))
+    }
+    max_progress_steps = nlevels(instance_temp[, feature_1]) * (max(data[feature_2]) - min(data[feature_2])) / step_2
+    count_progress = 0
+    progress <-
+      txtProgressBar(min = 0,
+                     max = max_progress_steps,
+                     style = 3)
     for (i in unique(data[, feature_1])) {
       instance_temp[, feature_1] = factor(x = i, levels = unique(data[, feature_1]))
-      if (step_2 > max(data[feature_2]) - min(data[feature_2]) ||
-          step_1 <= 0) {
-        stop(paste("Step = ",
-                   step_2, error_1))
-      }
       for (j in seq(min(data[feature_2]), max(data[feature_2]), by = step_2)) {
         instance_temp[, feature_2] = j
         pred = predict.fun(model, instance_temp)
         pred = as.vector(pred)
         point_matrix = rbind(point_matrix, c(instance_temp, pred))
+        count_progress = count_progress + 1
+        setTxtProgressBar(progress, count_progress)
       }
     }
+    close(progress)
   }
   # Two categorical features
   else if (class(data[, feature_1]) == "factor" &&
            class(data[, feature_2]) == "factor") {
     num_categorical_features = 2
+    count_levels = 0
+    progress <-
+      txtProgressBar(min = 0,
+                     max = nlevels(instance_temp[, feature_1]),
+                     style = 3)
     for (i in unique(data[, feature_1])) {
       instance_temp[, feature_1] = factor(x = i, levels = levels(data[, feature_1]))
       for (j in unique(data[, feature_2])) {
@@ -78,7 +91,10 @@ localICE = function(instance,
         pred = as.vector(pred)
         point_matrix = rbind(point_matrix, c(instance_temp, pred))
       }
+      count_levels = count_levels + 1
+      setTxtProgressBar(progress, count_levels)
     }
+    close(progress)
   }
   # No categorical features
   else {
@@ -97,6 +113,9 @@ localICE = function(instance,
                  " of ",
                  feature_2, error_1))
     }
+    progress <- txtProgressBar(min = 0,
+                               max = 1,
+                               style = 3)
     for (i in seq(min(data[feature_1]), max(data[feature_1]), by = step_1)) {
       instance_temp[, feature_1] = i
       for (j in seq(min(data[feature_2]), max(data[feature_2]), by = step_2)) {
@@ -105,7 +124,9 @@ localICE = function(instance,
         pred = as.vector(pred)
         point_matrix = rbind(point_matrix, c(instance_temp, pred))
       }
+      setTxtProgressBar(progress, (i - min(data[feature_1])) / (max(data[feature_1]) - min(data[feature_1])))
     }
+    close(progress)
   }
   point_matrix = as.data.frame(point_matrix)
   if (num_categorical_features == 1) {

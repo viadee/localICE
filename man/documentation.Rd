@@ -92,7 +92,7 @@ if(require("h2o") && require("mlbench")){
     prediction = as.data.frame(prediction)
     return(prediction$predict)
   }
-
+  data("PimaIndiansDiabetes")
   rf = h2o.randomForest(y = "diabetes", training_frame = as.h2o(PimaIndiansDiabetes))
 
   explanation = localICE(

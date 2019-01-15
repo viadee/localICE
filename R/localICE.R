@@ -57,10 +57,9 @@ localICE = function(instance,
     }
     max_progress_steps = nlevels(instance_temp[, feature_1]) * (max(data[feature_2]) - min(data[feature_2])) / step_2
     count_progress = 0
-    progress <-
-      txtProgressBar(min = 0,
-                     max = max_progress_steps,
-                     style = 3)
+    progress = txtProgressBar(min = 0,
+                              max = max_progress_steps,
+                              style = 3)
     for (i in unique(data[, feature_1])) {
       instance_temp[, feature_1] = factor(x = i, levels = unique(data[, feature_1]))
       for (j in seq(min(data[feature_2]), max(data[feature_2]), by = step_2)) {
@@ -77,11 +76,10 @@ localICE = function(instance,
   else if (class(data[, feature_1]) == "factor" &&
            class(data[, feature_2]) == "factor") {
     num_categorical_features = 2
-    count_levels = 0
-    progress <-
-      txtProgressBar(min = 0,
-                     max = nlevels(instance_temp[, feature_1]),
-                     style = 3)
+    count_progress = 0
+    progress = txtProgressBar(min = 0,
+                              max = nlevels(instance_temp[, feature_1]),
+                              style = 3)
     for (i in unique(data[, feature_1])) {
       instance_temp[, feature_1] = factor(x = i, levels = levels(data[, feature_1]))
       for (j in unique(data[, feature_2])) {
@@ -90,8 +88,8 @@ localICE = function(instance,
         pred = as.vector(pred)
         point_matrix = rbind(point_matrix, c(instance_temp, pred))
       }
-      count_levels = count_levels + 1
-      setTxtProgressBar(progress, count_levels)
+      count_progress = count_progress + 1
+      setTxtProgressBar(progress, count_progress)
     }
   }
   # No categorical features
@@ -111,9 +109,9 @@ localICE = function(instance,
                  " of ",
                  feature_2, error_1))
     }
-    progress <- txtProgressBar(min = 0,
-                               max = 1,
-                               style = 3)
+    progress = txtProgressBar(min = 0,
+                              max = 1,
+                              style = 3)
     for (i in seq(min(data[feature_1]), max(data[feature_1]), by = step_1)) {
       instance_temp[, feature_1] = i
       for (j in seq(min(data[feature_2]), max(data[feature_2]), by = step_2)) {

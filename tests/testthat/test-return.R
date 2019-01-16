@@ -17,6 +17,4 @@ test_that("Classification as regression", {
   }
 
     expect_class(explanation, "ggplot")
-
-
 })

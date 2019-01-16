@@ -1,3 +1,4 @@
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Build Status](https://travis-ci.com/viadee/localICE.svg?branch=master)](https://travis-ci.com/viadee/localICE)
 [![codecov](https://codecov.io/gh/viadee/localICE/branch/master/graph/badge.svg)](https://codecov.io/gh/viadee/localICE)
 

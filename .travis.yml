@@ -1,0 +1,9 @@
+language: r
+cache: packages
+
+notifications:
+  email:
+    recipients:
+      - mf-walter@web.de
+    on_success: change
+    on_failure: always

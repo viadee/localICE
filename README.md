@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/viadee/localICE.svg?branch=master)](https://travis-ci.com/viadee/localICE)
+[![Coverage status](https://codecov.io/gh/viadee/localICE/branch/master/graph/badge.svg)](https://codecov.io/github/viadee/localICE?branch=master)
 
 # localICE
 Local Individual Conditional Expectation (localICE) is a local explanation approach from the field of eXplainable Artificial Intelligence (XAI). This is the repository of the ```R```-package ```localICE```.

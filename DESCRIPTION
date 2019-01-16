@@ -12,6 +12,7 @@ Imports:
   ggplot2,
   checkmate
 Suggests: 
+  covr,
   h2o,
   mlbench,
   randomForest,

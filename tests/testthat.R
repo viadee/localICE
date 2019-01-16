@@ -1,0 +1,5 @@
+library(testthat)
+library(checkmate)
+library(localICE)
+library(randomForest)
+test_check("localICE")

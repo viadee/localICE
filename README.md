@@ -37,9 +37,9 @@ Martin Walter - *Initial work* - [Martin Walter](https://github.com/aiwalter)
 
 
 [regression]: 
-https://github.com/viadee/localICE/blob/master/Examples/regression.png
+https://github.com/viadee/localICE/blob/master/images/regression.png
 "Regression"
 
 [classification]: 
-https://github.com/viadee/localICE/blob/master/Examples/classification.png
+https://github.com/viadee/localICE/blob/master/images/classification.png
 "Classification"

@@ -9,9 +9,11 @@ License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-  ggplot2
+  ggplot2,
+  checkmate
 Suggests: 
-  mlbench, 
   h2o,
-  randomForest
+  mlbench,
+  randomForest,
+  testthat
 RoxygenNote: 6.1.1

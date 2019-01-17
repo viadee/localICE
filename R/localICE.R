@@ -34,7 +34,7 @@ localICE = function(instance,
     step_2 = step_temp
   }
   # Predict fun
-  if (!hasArg("predict.fun")) {
+  if (!is.function(predict.fun)) {
     predict.fun = function(model, newdata) {
       prediction = predict(model, newdata)
       prediction = as.data.frame(prediction)

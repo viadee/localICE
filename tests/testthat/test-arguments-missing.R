@@ -5,49 +5,7 @@ test_that("aruments", {
   if(require("randomForest")){
     rf = randomForest(Species ~., data = iris, ntree = 10)
 
-    # wrong step_1
-    expect_error(
-      localICE(
-        instance = iris[1,],
-        data = iris,
-        feature_1 = "Sepal.Length",
-        feature_2 = "Petal.Width",
-        target = "Species",
-        model = rf,
-        regression = F,
-        step_1 = 0,
-        step_2 = 0.5
-      )
-    )
-    # wrong step_2
-    expect_error(
-      localICE(
-        instance = iris[1,],
-        data = iris,
-        feature_1 = "Sepal.Length",
-        feature_2 = "Petal.Width",
-        target = "Species",
-        model = rf,
-        regression = F,
-        step_1 = 0.5,
-        step_2 = 0
-      )
-    )
-    # wrong data input
-    expect_error(
-      localICE(
-        instance = iris[1,],
-        data = "iris",
-        feature_1 = "Sepal.Length",
-        feature_2 = "Petal.Width",
-        target = "Species",
-        model = rf,
-        regression = F,
-        step_1 = 0.5,
-        step_2 = 0.5
-      )
-    )
-    # no target
+    # missing target
     expect_error(
       localICE(
         instance = iris[1,],
@@ -60,7 +18,7 @@ test_that("aruments", {
         step_2 = 0.5
       )
     )
-    # no model
+    # missing model
     expect_error(
       localICE(
         instance = iris[1,],
@@ -121,6 +79,36 @@ test_that("aruments", {
         target = "Species",
         model = rf,
         regression = F,
+        step_1 = 0.5,
+        step_2 = 0.5
+      )
+    )
+    # missing predict.fun (not found)
+    expect_error(
+      localICE(
+        instance = iris[1,],
+        data = iris,
+        feature_1 = "Sepal.Length",
+        feature_2 = "Petal.Width",
+        target = "Species",
+        model = rf,
+        regression = F,
+        predict.fun = predict.fun,
+        step_1 = 0.5,
+        step_2 = 0.5
+      )
+    )
+    # missing predict.fun (not found)
+    expect_error(
+      localICE(
+        instance = iris[1,],
+        data = iris,
+        feature_1 = "Sepal.Length",
+        feature_2 = "Petal.Width",
+        target = "Species",
+        model = rf,
+        regression = F,
+        predict.fun = predict.fun(),
         step_1 = 0.5,
         step_2 = 0.5
       )

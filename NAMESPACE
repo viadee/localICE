@@ -2,3 +2,5 @@
 
 export(localICE)
 import(ggplot2)
+import(stats)
+import(utils)

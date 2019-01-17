@@ -2,6 +2,7 @@ context("test regression")
 test_that("Regression as classification", {
 
   if(require("randomForest")){
+    data("Servo")
     rf = randomForest(Class ~., data = Servo, ntree = 10)
     expect_is(
       localICE(

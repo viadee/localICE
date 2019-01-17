@@ -16,5 +16,7 @@ Suggests:
   h2o,
   mlbench,
   randomForest,
-  testthat
+  testthat,
+  stats,
+  utils
 RoxygenNote: 6.1.1

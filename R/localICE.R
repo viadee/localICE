@@ -1,4 +1,6 @@
 #' @import ggplot2
+#' @import stats
+#' @import utils
 #' @export
 localICE = function(instance,
                     data,

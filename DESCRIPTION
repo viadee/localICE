@@ -4,7 +4,9 @@ Title: Local Individual Conditional Expectation (localICE)
 Version: 0.1.0
 Authors@R: c(person(given = "Martin", family = "Walter", role = c("aut", "cre"), email = "mf-walter@web.de"))
 Maintainer: Martin Walter <mf-walter@web.de>
-Description: This package provides localICE as an extension to ICE. localICE is a three-dimensional local explanation for particular data instances. The three dimension are two features at the horizontal and vertical axes as well as the target that is represented by different colors. The approach is applicable for classification and regression problems to explain interactions of two features towards the target. The plot for discrete targets looks similar to plots of cluster algorithms like k-means, where different clusters represent different predictions. The approach can explain features of type factor and numeric.
+Description: Local Individual Conditional Expectation (localICE) is as an extension to ICE and provides three-dimensional local explanations for particular data instances. The three dimension are two features at the horizontal and vertical axes as well as the target that is represented by different colors. The approach is applicable for classification and regression problems to explain interactions of two features towards the target. The plot for discrete targets looks similar to plots of cluster algorithms like k-means, where different clusters represent different predictions. The approach can explain features of type factor and numeric.
+URL: https://github.com/viadee/localICE
+BugReports: https://github.com/viadee/localICE/issues
 License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
 LazyData: true

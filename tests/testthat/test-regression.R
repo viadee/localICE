@@ -1,7 +1,7 @@
 context("test regression")
 test_that("Regression as classification", {
 
-  if(require("randomForest")){
+  if(require("randomForest" && require("mlbench"))){
     data("Servo")
     rf = randomForest(Class ~., data = Servo, ntree = 10)
     expect_is(

@@ -64,7 +64,7 @@ if(require("randomForest")){
 # Classification example:
 if(require("randomForest") && require("mlbench")){
   data("PimaIndiansDiabetes")
-  rf = randomForest(diabetes ~., data = PimaIndiansDiabetes, ntree = 100)
+  rf = randomForest(diabetes ~., data = PimaIndiansDiabetes, ntree = 20)
 
   explanation = localICE(
     instance = PimaIndiansDiabetes[8,],
@@ -74,13 +74,13 @@ if(require("randomForest") && require("mlbench")){
     target = "diabetes",
     model = rf,
     regression = FALSE,
-    step_1 = 2,
-    step_2 = 2
+    step_1 = 4,
+    step_2 = 4
   )
   plot(explanation)
 }
 # Example of how to use predict.fun to use any machine learning library,
-# in this case the library h2o for a regression model:
+# in this case the library h2o for a regression model (reduce step for better plot):
 if(require("h2o") && require("mlbench")){
   h2o.init()
 
@@ -102,7 +102,7 @@ if(require("h2o") && require("mlbench")){
     model = rf,
     regression = TRUE,
     predict.fun = predict.fun,
-    step_1 = 10
+    step_1 = 20
   )
   plot(explanation)
   h2o.shutdown(prompt = FALSE)

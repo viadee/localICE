@@ -19,6 +19,35 @@ See Goldstein et al (2013) at http://arxiv.org/abs/1309.6392 for the ICE approac
 ### Classification
 ![classification]
 
+### Using \code{localICE} with any machine learning library, in this case with \code{h2o}:
+```
+if(require("h2o") && require("mlbench")){
+  h2o.init()
+
+  # Wrapping the h2o predict function and data type:
+  predict.fun = function(model,newdata){
+    prediction = h2o.predict(model, as.h2o(newdata))
+    prediction = as.data.frame(prediction)
+    return(prediction$predict)
+  }
+  data("PimaIndiansDiabetes")
+  rf = h2o.randomForest(y = "glucose", training_frame = as.h2o(PimaIndiansDiabetes))
+
+  explanation = localICE(
+    instance = PimaIndiansDiabetes[1,],
+    data = PimaIndiansDiabetes,
+    feature_1 = "age",
+    feature_2 = "diabetes",
+    target = "glucose",
+    model = rf,
+    regression = TRUE,
+    predict.fun = predict.fun,
+    step_1 = 5
+  )
+  plot(explanation)
+  h2o.shutdown(prompt = FALSE)
+}
+```
 # Installation
 The package is planned to be released at CRAN. Till then, please use the following commands to install it:
 ```

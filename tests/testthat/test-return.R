@@ -2,7 +2,6 @@ context("return ggplot object")
 
 test_that("Classification as regression", {
 
-  if(require("randomForest")){
   rf = randomForest(Species ~., data = iris, ntree = 10)
 
   explanation = localICE(
@@ -15,7 +14,6 @@ test_that("Classification as regression", {
     regression = F,
     step_1 = 0.5,
     step_2 = 0.5)
-  }
 
     expect_class(explanation, "ggplot")
 })

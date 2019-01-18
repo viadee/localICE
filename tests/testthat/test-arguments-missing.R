@@ -1,8 +1,6 @@
 context("test arguments")
 
 test_that("aruments", {
-
-  if(require("randomForest")){
     rf = randomForest(Species ~., data = iris, ntree = 10)
 
     # missing target
@@ -113,5 +111,4 @@ test_that("aruments", {
         step_2 = 0.5
       )
     )
-  }
 })

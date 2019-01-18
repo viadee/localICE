@@ -1,7 +1,5 @@
 context("test classification")
 test_that("Classification as regression", {
-
-  if(require("randomForest" && require("mlbench"))){
     data("Servo")
     rf = randomForest(Motor ~., data = Servo, ntree = 10)
     expect_error(
@@ -56,5 +54,4 @@ test_that("Classification as regression", {
         step_2 = 1
       )
     )
-  }
 })

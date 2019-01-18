@@ -74,40 +74,19 @@ if(require("randomForest") && require("mlbench")){
     target = "diabetes",
     model = rf,
     regression = FALSE,
-    step_1 = 4,
-    step_2 = 4
+    step_1 = 5,
+    step_2 = 5
   )
   plot(explanation)
 }
-# Example of how to use predict.fun to use any machine learning library,
-# in this case the library h2o for a regression model (reduce step for better plot):
-if(require("h2o") && require("mlbench")){
-  h2o.init()
-
-  # Wrapping the h2o predict function and data type:
+# An example of how to use predict.fun to use any machine learning library,
+# in this case the library h2o for a regression model (see GitHub for complete example):
+# Wrapping the h2o predict function and data type:
   predict.fun = function(model,newdata){
     prediction = h2o.predict(model, as.h2o(newdata))
     prediction = as.data.frame(prediction)
     return(prediction$predict)
   }
-  data("PimaIndiansDiabetes")
-  rf = h2o.randomForest(y = "glucose", training_frame = as.h2o(PimaIndiansDiabetes))
-
-  explanation = localICE(
-    instance = PimaIndiansDiabetes[1,],
-    data = PimaIndiansDiabetes,
-    feature_1 = "age",
-    feature_2 = "diabetes",
-    target = "glucose",
-    model = rf,
-    regression = TRUE,
-    predict.fun = predict.fun,
-    step_1 = 20
-  )
-  plot(explanation)
-  h2o.shutdown(prompt = FALSE)
-}
-
 }
 
 

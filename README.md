@@ -19,7 +19,7 @@ See Goldstein et al (2013) at http://arxiv.org/abs/1309.6392 for the ICE approac
 ### Classification
 ![classification]
 
-### Using \code{localICE} with any machine learning library, in this case with \code{h2o}:
+### Using ```localICE``` with any machine learning library, in this case with ```h2o```:
 ```
 if(require("h2o") && require("mlbench")){
   h2o.init()

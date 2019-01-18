@@ -75,12 +75,12 @@ if(require("randomForest") && require("mlbench")){
     model = rf,
     regression = FALSE,
     step_1 = 5,
-    step_2 = 5
+    step_2 = 8
   )
   plot(explanation)
 }
 # An example of how to use predict.fun to use any machine learning library,
-# in this case the library h2o for a regression model (see GitHub for complete example):
+# in this case the library h2o for a regression model (see GitHub for complete h2o example):
 # Wrapping the h2o predict function and data type:
   predict.fun = function(model,newdata){
     prediction = h2o.predict(model, as.h2o(newdata))

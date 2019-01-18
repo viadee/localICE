@@ -23,7 +23,6 @@ See Goldstein et al (2013) at http://arxiv.org/abs/1309.6392 for the ICE approac
 ```splus
 if(require("h2o") && require("mlbench")){
   h2o.init()
-
   # Wrapping the h2o predict function and data type:
   predict.fun = function(model,newdata){
     prediction = h2o.predict(model, as.h2o(newdata))
@@ -32,7 +31,6 @@ if(require("h2o") && require("mlbench")){
   }
   data("PimaIndiansDiabetes")
   rf = h2o.randomForest(y = "glucose", training_frame = as.h2o(PimaIndiansDiabetes))
-
   explanation = localICE(
     instance = PimaIndiansDiabetes[1,],
     data = PimaIndiansDiabetes,

@@ -20,7 +20,7 @@ See Goldstein et al (2013) at http://arxiv.org/abs/1309.6392 for the ICE approac
 ![classification]
 
 ### Using ```localICE``` with any machine learning library, in this case with ```h2o```:
-```
+```splus
 if(require("h2o") && require("mlbench")){
   h2o.init()
 
@@ -50,14 +50,14 @@ if(require("h2o") && require("mlbench")){
 ```
 # Installation
 The package is planned to be released at CRAN. Till then, please use the following commands to install it:
-```
+```splus
 if(require("devtools")){
   install_github("viadee/localICE")  
 }
 ```
 
 Restart your session in RStudio after installation:
-```
+```splus
 .rs.restartR()
 ```
 

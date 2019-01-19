@@ -7,9 +7,10 @@
 *Local Individual Conditional Expectation (localICE)* is a local explanation approach from the field of *eXplainable Artificial Intelligence (XAI)*. This is the repository of the ```R```-package ```localICE```.
 
 # Introduction
+### Idea
 localICE is a model-agnostic XAI approach which provides three-dimensional local explanations for particular data instances. The approach is proposed in the master thesis of Martin Walter as an extension to ICE. The three dimensions are the two features at the horizontal and vertical axes as well as the target represented by different colors. The approach is applicable for classification and regression problems to explain interactions of two features towards the target. For classification models, the number of classes can be more than two and each class is added as a different color to the plot. The given instance is added to the plot as two dotted lines according to the feature values. The ```localICE```-package can explain features of type ```factor``` and ```numeric``` of any machine learning model. Automatically supported machine learning libraries are ```MLR```, ```randomForest```, ```caret``` or all other with an ```S3``` predict function. For further model types from other libraries, a predict function has to be provided as an argument in order to get access to the model, as described below by means of an example with the ```h2o``` library. 
-
-See Goldstein et al. (2013) at http://arxiv.org/abs/1309.6392 for the ICE approach. 
+### Reference
+Alex Goldstein et al. *“Peeking Inside the Black Box: Visualizing Statistical Learning With Plots of Individual Conditional Expectation”*. In: *Journal of Computational and Graphical Statistics* 24.1 (2013), pp. 44–65. URL: http://arxiv.org/abs/1309.6392 
 
 # Examples
 ### Regression

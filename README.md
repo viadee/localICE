@@ -8,7 +8,7 @@
 
 # Introduction
 ### Idea
-localICE is a model-agnostic XAI approach which provides three-dimensional local explanations for particular data instances. The approach is proposed in the master thesis of Martin Walter as an extension to ICE. The three dimensions are the two features at the horizontal and vertical axes as well as the target represented by different colors. The approach is applicable for classification and regression problems to explain interactions of two features towards the target. For classification models, the number of classes can be more than two and each class is added as a different color to the plot. The given instance is added to the plot as two dotted lines according to the feature values. The ```localICE```-package can explain features of type ```factor``` and ```numeric``` of any machine learning model. Automatically supported machine learning libraries are ```MLR```, ```randomForest```, ```caret``` or all other with an ```S3``` predict function. For further model types from other libraries, a predict function has to be provided as an argument in order to get access to the model, as described below by means of an example with the ```h2o``` library. 
+localICE is a model-agnostic XAI approach which provides three-dimensional local explanations for particular data instances. The approach is proposed in the master thesis of Martin Walter as an extension to ICE (see Reference). The three dimensions are the two features at the horizontal and vertical axes as well as the target represented by different colors. The approach is applicable for classification and regression problems to explain interactions of two features towards the target. For classification models, the number of classes can be more than two and each class is added as a different color to the plot. The given instance is added to the plot as two dotted lines according to the feature values. The ```localICE```-package can explain features of type ```factor``` and ```numeric``` of any machine learning model. Automatically supported machine learning libraries are ```MLR```, ```randomForest```, ```caret``` or all other with an ```S3``` predict function. For further model types from other libraries, a predict function has to be provided as an argument in order to get access to the model, as described below by means of an example with the ```h2o``` library. 
 ### Reference
 Alex Goldstein et al. *“Peeking Inside the Black Box: Visualizing Statistical Learning With Plots of Individual Conditional Expectation”*. In: *Journal of Computational and Graphical Statistics* 24.1 (2013), pp. 44–65. URL: http://arxiv.org/abs/1309.6392 
 
@@ -24,16 +24,21 @@ Alex Goldstein et al. *“Peeking Inside the Black Box: Visualizing Statistical 
 ```splus
 if(require("h2o") && require("mlbench")){
   h2o.init()
+
   # Wrapping the h2o predict function and data type:
   predict.fun = function(model,newdata){
     prediction = h2o.predict(model, as.h2o(newdata))
     prediction = as.data.frame(prediction)
     return(prediction$predict)
   }
+
+  # Get data and train a random forest
   data("PimaIndiansDiabetes")
   rf = h2o.randomForest(y = "glucose", training_frame = as.h2o(PimaIndiansDiabetes))
+
+  # Get explanation
   explanation = localICE(
-    instance = PimaIndiansDiabetes[1,],
+    instance = PimaIndiansDiabetes[1, ],
     data = PimaIndiansDiabetes,
     feature_1 = "age",
     feature_2 = "diabetes",

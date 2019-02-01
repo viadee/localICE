@@ -53,7 +53,13 @@ if(require("h2o") && require("mlbench")){
 }
 ```
 # Installation
-The package is planned to be released at CRAN. Till then, please use the following commands to install it:
+For official version, install via CRAN:
+```splus
+install.packages("localICE")
+require("localICE")
+help("localICE")
+```
+For developmental version, install via GitHub:
 ```splus
 if(require("devtools")){
   install_github("viadee/localICE")  

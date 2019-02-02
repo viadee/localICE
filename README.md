@@ -2,7 +2,8 @@
 [![Build Status](https://travis-ci.com/viadee/localICE.svg?branch=master)](https://travis-ci.com/viadee/localICE)
 [![codecov](https://codecov.io/gh/viadee/localICE/branch/master/graph/badge.svg)](https://codecov.io/gh/viadee/localICE)
 [![CRAN Status Badge](http://www.r-pkg.org/badges/version/localICE)](https://CRAN.R-project.org/package=localICE)
-[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/localICE)](https://CRAN.R-project.org/package=localICE)
+[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/localICE?color=brightgreen
+)](https://CRAN.R-project.org/package=localICE)
 # localICE
 *Local Individual Conditional Expectation (localICE)* is a local explanation approach from the field of *eXplainable Artificial Intelligence (XAI)*. This is the repository of the ```R```-package ```localICE```.
 

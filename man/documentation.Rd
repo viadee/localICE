@@ -49,7 +49,7 @@ if(require("randomForest")){
   rf = randomForest(Sepal.Length ~., data = iris, ntree = 20)
 
   explanation = localICE(
-    instance = iris[1,],
+    instance = iris[1, ],
     data = iris,
     feature_1 = "Species",
     feature_2 = "Sepal.Width",
@@ -67,7 +67,7 @@ if(require("randomForest") && require("mlbench")){
   rf = randomForest(diabetes ~., data = PimaIndiansDiabetes, ntree = 20)
 
   explanation = localICE(
-    instance = PimaIndiansDiabetes[8,],
+    instance = PimaIndiansDiabetes[8, ],
     data = PimaIndiansDiabetes,
     feature_1 = "age",
     feature_2 = "glucose",
@@ -84,7 +84,8 @@ if(require("randomForest") && require("mlbench")){
 predict.fun = function(model, newdata){
   prediction = h2o.predict(model, as.h2o(newdata))
   prediction = as.data.frame(prediction)
-  return(prediction$predict)
+  prediction = prediction$prediction
+  return(prediction)
 }
 }
 

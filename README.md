@@ -4,6 +4,7 @@
 [![CRAN Status Badge](http://www.r-pkg.org/badges/version/localICE)](https://CRAN.R-project.org/package=localICE)
 [![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/localICE?color=brightgreen
 )](https://CRAN.R-project.org/package=localICE)
+[![](https://cranlogs.r-pkg.org/badges/localICE)](https://cran.r-project.org/package=localICE)
 # localICE
 *Local Individual Conditional Expectation (localICE)* is a local explanation approach from the field of *eXplainable Artificial Intelligence (XAI)*. This is the repository of the ```R```-package ```localICE```.
 

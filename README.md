@@ -1,5 +1,5 @@
 [![CRAN Status Badge](http://www.r-pkg.org/badges/version/localICE)](https://CRAN.R-project.org/package=localICE)
-[![GitHub Status Badge](https://img.shields.io/badge/GitHub-0.1.0-green.svg)](https://github.com/viadee/localICE)
+[![GitHub Status Badge](https://img.shields.io/badge/GitHub-0.1.1-green.svg)](https://github.com/viadee/localICE)
 [![Build Status](https://travis-ci.com/viadee/localICE.svg?branch=master)](https://travis-ci.com/viadee/localICE)
 [![codecov](https://codecov.io/gh/viadee/localICE/branch/master/graph/badge.svg)](https://codecov.io/gh/viadee/localICE)
 [![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/localICE?color=brightgreen
